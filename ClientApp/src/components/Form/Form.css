@@ -1,0 +1,225 @@
+/* 
+    - Get Poppins font
+    - Fix icon not working
+    - Get Saira Condensed
+    - Re Organize Css into component files
+*/
+
+.row-no-padding[class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.survey-form {
+    padding: 28px;
+}
+
+.survey-form__input {
+    display: inline-block;
+    width: 100%;
+    color: rgb(117, 117, 117);
+    background-color: rgba(255, 255, 255, 0);
+    padding: 16px;
+    margin: 0px;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 0.994318px;
+    border-color: rgb(212, 212, 212);
+    font-family: Poppins, Helvetica, Arial, Lucida, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-rtl-ordering: logical;
+}
+
+select {
+    color: rgb(117, 117, 117);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0px;
+    /* TODO: Fix this fixed height value*/
+    height: 56px;
+    line-height: 1.5;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-image: none;
+    box-sizing: border-box;
+    cursor: auto;
+    font-stretch: 100%;
+    text-align: start;
+    text-indent: 0px;
+    text-rendering: auto;
+    text-shadow: none;
+    text-size-adjust: 100%;
+    text-transform: none;
+    word-spacing: 0px;
+    writing-mode: horizontal-tb;
+}
+
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: rgb(117, 117, 117);
+    margin-right: 0.5em;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+    content: "";
+}
+
+textarea {
+    width: 100%;
+    color: rgb(117, 117, 117);
+    border-color: rgb(212, 212, 212);
+    padding: 16px;
+    margin: 0px;
+    font-size: 16px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: normal;
+    text-align: start;
+    text-indent: 0px;
+    text-rendering: auto;
+    text-shadow: none;
+    text-size-adjust: 100%;
+    text-transform: none;
+    writing-mode: horizontal-tb;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-rtl-ordering: logical;
+}
+
+button {
+    margin-top: 12px;
+    margin-right: 12px;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgb(226, 17, 59);
+    background-image: none;
+    background-origin: padding-box;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: cover;
+    border-color: rgb(226, 17, 59);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-style: solid;
+    border-width: 1.98864px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Saira Condensed", Helvetica, Arial, Lucida, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    height: 58.3523px;
+    line-height: 40.8px;
+    outline-color: rgb(255, 255, 255);
+    outline-style: none;
+    outline-width: 0px;
+    padding-bottom: 7.2px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 7.2px;
+    position: relative;
+    text-align: left;
+    text-decoration-color: rgb(255, 255, 255);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-size-adjust: 100%;
+    text-transform: uppercase;
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+    transition-property: all;
+    transition-timing-function: ease;
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+}
+
+button:disabled,
+button[disabled] {
+    opacity: 0.3;
+}
+
+form button {
+    margin-right: 12px;
+    margin-bottom: 24px;
+}
+
+button.submit {
+    background: #208ead;
+    border-color: #208ead;
+    outline-color: #208ead;
+}
+
+button.submit:hover:not([disabled]) {
+    border-color: #208ead;
+    outline-color: #208ead;
+    color: #208ead;
+}
+
+form button:hover:not([disabled]) {
+    color: rgb(226, 17, 59);
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgb(226, 17, 59);
+    text-decoration-color: rgb(226, 17, 59);
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-image: none;
+    background-origin: padding-box;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-style: solid;
+    border-bottom-width: 1.98864px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Saira Condensed", Helvetica, Arial, Lucida, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    height: 58.3523px;
+    line-height: 40.8px;
+    outline-color: rgb(226, 17, 59);
+    outline-style: none;
+    outline-width: 0px;
+    position: relative;
+    text-align: left;
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-size-adjust: 100%;
+    text-transform: uppercase;
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+    transition-property: all;
+    transition-timing-function: ease;
+    vertical-align: baseline;
+}
+
+.message {
+    text-align: center;
+    padding: 48px;
+    font-size: 1.4em;
+    font-weight: 800;
+}
