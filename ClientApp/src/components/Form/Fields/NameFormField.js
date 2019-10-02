@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, Col, Row } from 'reactstrap';
+import { FormGroup } from 'reactstrap';
 
 export class NameFormField extends Component {
 
