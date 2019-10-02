@@ -48,7 +48,7 @@ export class SurveyForm extends Component {
     onSubmit(event) {
         event.preventDefault()
         this.setState({ isLoading: true });
-        
+
         fetch(this.props.url, {            
             method: 'POST',
             headers: {
@@ -119,11 +119,11 @@ export class SurveyForm extends Component {
                                     />  
                                 {/* Date of birth */}
                                 <FormGroup>
-                                    <input name="dateOfBirth"
+                                    <input required name="dateOfBirth"
                                         type="date"
                                         max={new Date().toISOString().slice(0,10)}
-                                        className="survey-form__input"
-                                        placeholder="Date Of Birth:" 
+                                        className="survey-form__input survey-form__date-input"
+                                        placeholder="Date Of Birth" 
                                         value={this.state.dateOfBirth}
                                         onChange={this.handleChange.bind(this)}/>
                                 </FormGroup>                                
