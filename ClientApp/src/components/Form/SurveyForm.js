@@ -22,9 +22,8 @@ export class SurveyForm extends Component {
             dateOfBirth: "",
             location: "",
             feedback: "",
-            message: "",
             hasSubmission: cookie.load("hasSubmission"),
-            feedbackMaxLength: 2000
+            feedbackMaxLength: 2000,
         }
     }
 
@@ -36,9 +35,9 @@ export class SurveyForm extends Component {
         });
     }
 
-    handleLocationChange(event) {
+    handleLocationFound(data) {
         if(this.state.location === "") {
-            this.setState({location: event.location})
+            this.setState({location: data.location})
         }
     }
 
@@ -48,53 +47,42 @@ export class SurveyForm extends Component {
 
     onSubmit(event) {
         event.preventDefault()
-        
-        let data = {
-            titleType: parseInt(this.state.titleType),
-            othertitle: this.state.otherTitle,
-            name: this.state.name,
-            dateOfBirth: this.state.dateOfBirth,
-            location: this.state.location,
-            date: this.state.date,
-            feedback: this.state.feedback
-        };
         this.setState({ isLoading: true });
-
-        // Post form data.
-        fetch('survey/submit', {            
+        
+        fetch(this.props.url, {            
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+                titleType: parseInt(this.state.titleType),
+                othertitle: this.state.otherTitle,
+                name: this.state.name,
+                dateOfBirth: this.state.dateOfBirth,
+                location: this.state.location,
+                date: this.state.date,
+                feedback: this.state.feedback
+            }),
         })
         .then(response => response.json())
         .then((data) => {
             cookie.save("hasSubmission", true);
             this.setState({ 
-                message: data.message,
                 hasSubmission: true
             })
-        })
-        .catch((error) => {
-            // TODO: Handle Validation failing
-            console.log(error); 
         })
         .finally(() => {
             this.setState({ isLoading: false })
         });
-        
     }
 
     isNextEnabled()
     {
         var hasName = !!this.state.name;
         var hasTitle = (this.state.titleType != 4 || (this.state.titleType == 4 && !!this.state.otherTitle));
-        
         var dob = new Date(this.state.dateOfBirth);
-        var hasDate = (!!this.state.dateOfBirth && dob instanceof Date);
-
+        var hasDate = !!this.state.dateOfBirth && dob instanceof Date;
         return !(hasName && hasTitle && hasDate);
     }
 
@@ -102,7 +90,6 @@ export class SurveyForm extends Component {
     {
         var hasLocation = !!this.state.location;
         var hasFeedback = !!this.state.feedback && this.state.feedback.length <= this.state.feedbackMaxLength;
-
         return !(hasLocation && hasFeedback);
     }
 
@@ -114,7 +101,10 @@ export class SurveyForm extends Component {
                 :
                 <div>
                     { !this.state.isLoading ?
-                    <Form className="survey-form" onSubmit={this.onSubmit}>                    
+                    <Form className="survey-form" onSubmit={this.onSubmit}>  
+                        <FormGroup>
+                            <h2>{this.props.header}</h2>
+                        </FormGroup>                  
                         {/* Form Page: 0 */}
                         {
                             this.state.page === 0 ? 
@@ -131,6 +121,7 @@ export class SurveyForm extends Component {
                                 <FormGroup>
                                     <input name="dateOfBirth"
                                         type="date"
+                                        max={new Date().toISOString().slice(0,10)}
                                         className="survey-form__input"
                                         placeholder="Date Of Birth:" 
                                         value={this.state.dateOfBirth}
@@ -154,7 +145,7 @@ export class SurveyForm extends Component {
                                         placeholder="Location"
                                         value={this.state.location}
                                         onChange={this.handleChange.bind(this)}
-                                        onLocationFound={this.handleLocationChange.bind(this)} />
+                                        onLocationFound={this.handleLocationFound.bind(this)} />
                                 </FormGroup>                                
                                 {/* Feedback */}
                                 <FormGroup>

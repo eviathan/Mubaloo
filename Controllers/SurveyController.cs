@@ -14,10 +14,7 @@ namespace Moobaloo.Controllers
             if(ModelState.IsValid)
             {
                 Console.WriteLine(survey);
-
-                return new JsonResult(new {
-                    message = "Thank you for your feedback."
-                });
+                return new JsonResult(ModelState);
             }
             
             return BadRequest(ModelState);
